@@ -1,6 +1,7 @@
 
 const cells = document.querySelectorAll(".box")
 const result = document.querySelector(".result")
+const reset = document.querySelector(".reset")
 
 let isFull;
 
@@ -102,7 +103,7 @@ function checkWin() {
  
 }
 
-
+return null ;
 }
 
 
@@ -123,10 +124,27 @@ function displayResult() {
             result.style.display = "flex"
         }
         else
-            result.innerHTML = "";
+ {           result.innerHTML = "";
         result.style.display = "none" ;
+}
     
     
+}
+function resetButton()
+{
+
+    reset.addEventListener('click',() => {
+        result.innerHTML = "";
+        result.style.display = "none";
+    cells.forEach(element => {
+        element.innerHTML = "";
+        current = "O";
+        element.style.backgroundColor = "#B9375D"
+         element.style.pointerEvents = "auto";
+
+        
+    });
+})
 }
 
 function playGame()
@@ -135,8 +153,8 @@ function playGame()
     
     checkWin();
     checkBoard();
-   
     displayResult();
+    resetButton();
     
 }
 
@@ -148,7 +166,7 @@ element.addEventListener('click',()=> {
 
     if (element.innerHTML == "")
     {element.innerHTML = current;
-        element.style.backgroundColor = "red";
+        element.style.backgroundColor = "#ee957fff";
     }
     
     if (current == "O")
